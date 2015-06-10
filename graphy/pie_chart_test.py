@@ -25,7 +25,10 @@ from graphy import graphy_test
 class SegmentTest(graphy_test.GraphyTest):
 
   def setUp(self):
-    warnings.resetwarnings()
+    self.orig_filters = warnings.filters[:]
+
+  def tearDown(self):
+    warnings.filters[:] = self.orig_filters
 
   # TODO: remove once the deprecation warning is removed
   def testSegmentOrder(self):
